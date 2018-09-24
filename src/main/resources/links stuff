@@ -1,0 +1,60 @@
+package pages;
+
+import javax.persistence.*;
+
+/**
+ * Created By sethsneddon on Aug, 21 2018.
+ */
+@Entity
+@Table(name = "LINKS")
+public class Link {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String url;
+    private String linkText;
+
+
+    public Link() {
+    }
+
+    public Link(Long id, String url, String linkText) {
+        this.id = id;
+        this.url = url;
+        this.linkText = linkText;
+    }
+
+    @Override
+    public String toString() {
+        return "Link{" +
+                "id=" + id +
+                ", url='" + url + '\'' +
+                ", linkText='" + linkText + '\'' +
+                '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getLinkText() {
+        return linkText;
+    }
+
+    public void setLinkText(String linkText) {
+        this.linkText = linkText;
+    }
+}

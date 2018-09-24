@@ -1,0 +1,32 @@
+local root sql 0DC2080C24C62CE2FF8012D15A62A6F73EFDA786
+
+
+        System.out.println(driver.getPageSource());
+
+        List<WebElement> set = driver.findElements(By.tagName("a"));
+
+        System.out.println();
+        System.out.println("********************** GETTING LINKS **********************");
+        for (WebElement e : set){
+            if (e.getAttribute("href") != null) {
+                System.out.println(e.getAttribute("text") + " = " + e.getAttribute("href"));
+            }
+        }
+        System.out.println("*********************** END OF LINKS **********************");
+        System.out.println();
+        field_Password.sendKeys(Keys.ENTER);
+        wait.until(jsLoaded);
+
+
+        wait.until(ExpectedConditions.titleIs("WGU Student Portal | Courses"));
+
+        List<WebElement> courseListLinks = driver.findElements(By.tagName("a"));
+
+        System.out.println("********************** GETTING LINKS **********************");
+        for (WebElement e : courseListLinks){
+            if (e.getAttribute("href") != null) {
+                System.out.println(e.getAttribute("text") + " = " + e.getAttribute("href"));
+            }
+        }
+        System.out.println("*********************** END OF LINKS **********************");
+        System.out.println();
