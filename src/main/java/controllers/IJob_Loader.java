@@ -17,5 +17,7 @@ public interface IJob_Loader {
 
     void initialize_ListJob();
 
+    void initialize_EndPointJob();
+
     Job create_Job();
 }

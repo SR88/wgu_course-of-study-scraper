@@ -16,9 +16,14 @@ public class Link {
     private String url;
     @Column(name = "LINK_CONTEXT")
     private String linkText;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COURSE_ID", nullable = false)
     private Course course;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "LRPS_ENDPOINT_ID")
+    private EndPoint endPoint;
 
     public Link() {
     }

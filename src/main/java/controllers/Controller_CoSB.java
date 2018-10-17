@@ -2,7 +2,7 @@ package controllers;
 
 import entity.Course;
 import entity.Link;
-import entitymanagers.EntityManagerCoS;
+import entitymanagers.EntityManagement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -18,14 +18,14 @@ import java.util.concurrent.TimeUnit;
  */
 public class Controller_CoSB {
 
-    EntityManagerCoS emCoS;
+    EntityManagement emCoS;
     ExpectedCondition<Boolean> jsLoaded;
     Course course;
     WebDriver driver;
     WebDriverWait wait;
 
     public Controller_CoSB() {
-        this.emCoS = new EntityManagerCoS();
+        this.emCoS = new EntityManagement();
     }
 
 
