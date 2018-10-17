@@ -16,7 +16,7 @@ public class ClickElement {
 
     Actions a;
     public JavascriptExecutor jse = null;
-    private WebElement element;
+
 
     public void byXpath_Click(String s, WebDriver driver){
 
@@ -24,7 +24,7 @@ public class ClickElement {
 
         a = new Actions(driver);
 
-        element = driver.findElement(By.xpath(s));
+        WebElement element = driver.findElement(By.xpath(s));
 
         jse.executeScript(
                 "arguments[0].scrollIntoView();", element

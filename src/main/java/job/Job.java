@@ -9,9 +9,11 @@ import java.util.List;
 public class Job {
     private Boolean job_CourseList;
     private Boolean job_CoS;
+    private Boolean job_EndPoint;
     private Collection<List<Long>> partitionedJob;
     private Boolean overWriteAll;
     private Boolean insertOnly;
+    private Collection<List<String>> partitionedLRPSJob;
 
     public Job(){}
 
@@ -20,10 +22,28 @@ public class Job {
         return "Job{" +
                 "job_CourseList=" + job_CourseList +
                 ", job_CoS=" + job_CoS +
+                ", job_EndPoint=" + job_EndPoint +
                 ", partitionedJob=" + partitionedJob +
                 ", overWriteAll=" + overWriteAll +
                 ", insertOnly=" + insertOnly +
+                ", partitionedLRPSJob=" + partitionedLRPSJob +
                 '}';
+    }
+
+    public Collection<List<String>> getPartitionedLRPSJob() {
+        return partitionedLRPSJob;
+    }
+
+    public void setPartitionedLRPSJob(Collection<List<String>> partitionedLRPSJob) {
+        this.partitionedLRPSJob = partitionedLRPSJob;
+    }
+
+    public Boolean getJob_EndPoint() {
+        return job_EndPoint;
+    }
+
+    public void setJob_EndPoint(Boolean job_EndPoint) {
+        this.job_EndPoint = job_EndPoint;
     }
 
     public Boolean getJob_CourseList() {

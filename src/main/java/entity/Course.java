@@ -1,7 +1,7 @@
 package entity;
 
 import javax.persistence.*;
-import java.text.SimpleDateFormat;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,9 +29,9 @@ public class Course {
     private String versionId;
     @Column(name = "URL")
     private String url;
-    //@Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "UPDATED")
-    private String syncDate;
+    private Date syncDate;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
     public Set<Link> links = new HashSet<>();
@@ -40,28 +40,27 @@ public class Course {
     }
 
     public Course(String cosType, int pamsVersion, String cosName, int cosVersion, String versionId, String url) {
+        Date date = new Date();
+
         this.cosType = cosType;
         this.pamsVersion = pamsVersion;
         this.cosName = cosName;
         this.cosVersion = cosVersion;
         this.versionId = versionId;
         this.url = url;
+        this.syncDate = date;
     }
 
     public Course(String cosType, int pamsVersion, String cosName, int cosVersion, String versionId, String url, Set<Link> links) {
         Date date = new Date();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-        String s = sdf.format(date);
-
         this.cosType = cosType;
         this.pamsVersion = pamsVersion;
         this.cosName = cosName;
         this.cosVersion = cosVersion;
         this.versionId = versionId;
         this.url = url;
-        this.syncDate = s;
+        this.syncDate = date;
         this.links = links;
     }
 
@@ -135,11 +134,11 @@ public class Course {
         this.url = url;
     }
 
-    public String getSyncDate() {
+    public Date getSyncDate() {
         return syncDate;
     }
 
-    public void setSyncDate(String syncDate) {
+    public void setSyncDate(Timestamp syncDate) {
         this.syncDate = syncDate;
     }
 

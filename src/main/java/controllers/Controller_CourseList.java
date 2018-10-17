@@ -1,13 +1,13 @@
 package controllers;
 
 import entity.Course;
-import entitymanagers.EntityManagerCoS;
+import entitymanagers.EntityManagement;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.CourseList;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import pages.SSO;
-import webdrivers.WebDrivers;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class Controller_CourseList {
 
-    EntityManagerCoS emCoS;
+    EntityManagement emCoS;
     SSO sso;
     WebDriver driver = null;
     WebDriverWait wait;
@@ -26,7 +26,7 @@ public class Controller_CourseList {
     public final String initialURL = "https://my.wgu.edu/courses/course-list";
 
     public Controller_CourseList() {
-        this.emCoS = new EntityManagerCoS();
+        this.emCoS = new EntityManagement();
         this.sso = new SSO();
     }
 
