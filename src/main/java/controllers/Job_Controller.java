@@ -127,7 +127,7 @@ public class Job_Controller implements IJob_Controller {
                         thread_WebDrivers.getDriver().quit();
 
                         try {
-                            Thread.sleep(10000);
+                            Thread.sleep(7000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -152,7 +152,7 @@ public class Job_Controller implements IJob_Controller {
         for(Thread t : threads){
             t.start();
             try {
-                Thread.sleep(9000);
+                Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
