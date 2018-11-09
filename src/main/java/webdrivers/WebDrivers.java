@@ -4,6 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -52,8 +53,33 @@ public class WebDrivers {
     public void initializeFireFox(WebDrivers webDrivers){
         FirefoxOptions opts = new FirefoxOptions();
         opts.addArguments("-private");
+
+        FirefoxProfile profile = new FirefoxProfile();
+//        profile.setPreference("browser.download.manager.showWhenStarting", false);
+//        profile.setPreference("browser.helperApps.neverAsk.saveToDisk",
+//                "text/csv,application/x-msexcel,application/excel,application/x-excel,application/vnd.ms-excel,image/png,image/jpeg,text/html,text/plain,application/msword,application/xml");
+//        profile.setPreference("browser.download.folderList", 1);
+//        profile.setPreference("browser.helperApps.alwaysAsk.force", false);
+//        profile.setPreference("browser.privatebrowsing.autostart", true);
+        profile.setPreference("browser.download.alertOnEXEOpen", false);
+        profile.setPreference("browser.helperApps.neverAsksaveToDisk", "application/x-msexcel,application/excel,application/x-excel,application/excel,application/x-excel,application/excel,application/vnd.ms-excel,application/x-excel,application/x-msexcel");
+        profile.setPreference("browser.download.manager.showWhenStarting", false);
+        profile.setPreference("browser.download.manager.focusWhenStarting", false);
+        profile.setPreference("browser.helperApps.alwaysAsk.force", false);
+        profile.setPreference("browser.download.manager.alertOnEXEOpen", false);
+        profile.setPreference("browser.download.manager.closeWhenDone", false);
+        profile.setPreference("browser.download.manager.showAlertOnComplete", false);
+        profile.setPreference("browser.download.manager.useWindow", false);
+        profile.setPreference("browser.download.manager.showWhenStarting", false);
+        profile.setPreference("services.sync.prefs.sync.browser.download.manager.showWhenStarting", false);
+        profile.setPreference("pdfjs.disabled", true);
+
+        opts.setCapability(FirefoxDriver.PROFILE, profile);
+
         System.setProperty("webdriver.gecko.driver", "geckodriver");
+
         driver = new FirefoxDriver(opts);
+
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         jse = (JavascriptExecutor)driver;
         wait = new WebDriverWait(driver, 20);

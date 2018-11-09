@@ -115,15 +115,32 @@ public class Job_Controller implements IJob_Controller {
             for(List singleBatch : batch){
                 List<String> listURLs = singleBatch;
                 Thread t = new Thread(() ->{
-                    Controller_LRPS_EndPoint controller_lrps_endPoint = new Controller_LRPS_EndPoint();
-                    driver_controller = new Driver_Controller();
-                    WebDrivers thread_WebDrivers = driver_controller.createWebDriver();
-                    login_control.login(thread_WebDrivers.getDriver(), thread_WebDrivers.getWait());
 
-                    for(String distinctStringUrl : listURLs) {
+                    for (String distinctStringUrl : listURLs){
+                        Controller_LRPS_EndPoint controller_lrps_endPoint = new Controller_LRPS_EndPoint();
+                        driver_controller = new Driver_Controller();
+                        WebDrivers thread_WebDrivers = driver_controller.createWebDriver();
+                        login_control.login(thread_WebDrivers.getDriver(), thread_WebDrivers.getWait());
+
                         controller_lrps_endPoint.endPoint_Scrape(thread_WebDrivers.getDriver(), thread_WebDrivers.getWait(), distinctStringUrl);
+
+                        thread_WebDrivers.getDriver().quit();
+
+                        try {
+                            Thread.sleep(7000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
-                    thread_WebDrivers.getDriver().quit();
+//                    Controller_LRPS_EndPoint controller_lrps_endPoint = new Controller_LRPS_EndPoint();
+//                    driver_controller = new Driver_Controller();
+//                    WebDrivers thread_WebDrivers = driver_controller.createWebDriver();
+//                    login_control.login(thread_WebDrivers.getDriver(), thread_WebDrivers.getWait());
+//
+//                    for(String distinctStringUrl : listURLs) {
+//                        controller_lrps_endPoint.endPoint_Scrape(thread_WebDrivers.getDriver(), thread_WebDrivers.getWait(), distinctStringUrl);
+//                    }
+//                    thread_WebDrivers.getDriver().quit();
                 });
                 threads.add(t);
             }  // end threads loop
@@ -135,7 +152,7 @@ public class Job_Controller implements IJob_Controller {
         for(Thread t : threads){
             t.start();
             try {
-                Thread.sleep(9000);
+                Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
